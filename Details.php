@@ -299,7 +299,7 @@ $row3=mysqli_fetch_assoc($sqldata3);
 
 <div class="button-container">
 <button class="button" value="">Delete</button>
-<button class="button" value="">Edit</button> <div>hello</div>
+<button class="button" value="">Edit</button>
 </div>
 
 
@@ -314,32 +314,32 @@ $row3=mysqli_fetch_assoc($sqldata3);
     </tr>
 
     <td class="ppp">Courses ID:</td>
-      <td><?php echo $row2['CourseID']?></td>
+      <td><span class="span"><?php echo $row2['CourseID']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Selected Reson:</td>
-      <td><?php echo $row2['Description']?></td>
+      <td><span class="span"><?php echo $row2['Description']?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Credit Houres:</td>
-      <td><?php echo $row2['CreditHours']?></td>
+      <td><span class="span"><?php echo $row2['CreditHours']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Course Start Date:</td>
-      <td><?php echo $row2['StartDate']?></td>
+      <td><span class="span"><?php echo $row2['StartDate']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Course End Date:</td>
-      <td><?php echo $row2['EndDate']?></td>
+      <td><span class="span"><?php echo $row2['EndDate']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Class No: </td>
-      <td><?php echo $row2['RoomNumber']?></td>
+      <td><span class="span"><?php echo $row2['RoomNumber']?></span></td>
     </tr>
   </table>
 
