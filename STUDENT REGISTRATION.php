@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="rounded-div">
         <span class="borderAAA"></span>
-        <form action="" method="post" autocomplete="off">
+        <form action="delete.php" method="post" autocomplete="off">
             
         <h2>STUDENT INFORMATION&#128100;</h2>
             

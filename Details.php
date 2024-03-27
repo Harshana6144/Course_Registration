@@ -269,6 +269,8 @@ $row3=mysqli_fetch_assoc($sqldata3);
     <h1>YOUR DETAILS</h1>
   </div>
   <hr>
+
+  <form method="post" action="delete.php">
    <fieldset>
   <legend>Your Details  </legend>
 
@@ -340,7 +342,7 @@ $row3=mysqli_fetch_assoc($sqldata3);
  </table>
 
 <div class="button-container">
-<button class="button" value="">Delete</button>
+<button class="button" name="delete_student" value="<?php echo $row['StudentId']; ?>">Delete</button>
 <button class="button" value="">Edit</button>
 </div>
 
@@ -468,6 +470,8 @@ $row3=mysqli_fetch_assoc($sqldata3);
 <button class="button" value="">Delete</button>
 <button class="button" value="">Edit</button>
 </div> 
+
+</form>
 <p-->
   <!--button class="button" value="">Edit</button-->
   
