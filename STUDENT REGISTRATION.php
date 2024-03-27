@@ -84,14 +84,8 @@ if (isset($_POST['submit'])) {
             <div class="inputBox">
             <!--p>Student ID:</p-->
             <input type="text" id="student_id" name="stID" value="" required >
-            <?php
-            $num_spaces=12;
-            $space='';
-            for($i = 0;$i<$num_spaces;$i++){
-                $spaces.='&nbsp;';
-            }
-            echo '<span>' . $spaces. 'Student ID:  &#128394;</span>';
-            ?>
+           
+            <span>Student ID:  &#128394;</span>
             <i></i>
             </div>
 

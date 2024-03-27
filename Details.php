@@ -216,7 +216,7 @@ $row3=mysqli_fetch_assoc($sqldata3);
   }
 
   .span{
-    margin-left:280px;
+    margin-left:250px;
     font-size:25px;
   }
   
@@ -244,54 +244,54 @@ $row3=mysqli_fetch_assoc($sqldata3);
   <table class="tab">
     <tr >
       <td class="ppp">Student ID:</td>
-      <td ><!--input style="width:850px ;" type="text"  id="student_id" name="student_id" value=""--><span class="span">&#128204;<?php echo $row['StudentId']?></span></td>
+      <td ><!--input style="width:850px ;" type="text"  id="student_id" name="student_id" value=""--><span class="span">&#128204; <?php echo $row['StudentId']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">First Name:</td>
-      <td><!--input style="width:850px ;" type="text"  id="first_name" name="first_name" value=""--><span class="span">&#128204;<?php echo $row['FirstName']?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="first_name" name="first_name" value=""--><span class="span">&#128204; <?php echo $row['FirstName']?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Last Name:</td>
-      <td><!--input style="width:850px ;" type="text"  id="last_name" name="last_name" value=""--><span class="span"><?php echo $row['LastName']?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="last_name" name="last_name" value=""--><span class="span">&#128204; <?php echo $row['LastName']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Date of Birth:</td>
-      <td><!--input style="width:850px ;" type="text"  id="dob" name="dob" value=" "--><span class="span"><?php echo $row['DateOfBirth']?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="dob" name="dob" value=" "--><span class="span">&#128204; <?php echo $row['DateOfBirth']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Gender:</td>
-      <td><span class="span"><?php echo $row['Gender']?></span></span></td>
+      <td><span class="span">&#128204; <?php echo $row['Gender']?></span></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Email</td>
-      <td><span class="span"><?php echo $row['Email']?></span></td>
+      <td><span class="span">&#128204; <?php echo $row['Email']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Contact Number:</td>
-      <td><span class="span"><?php echo $row['Phone']?></span></td>
+      <td><span class="span">&#128204; <?php echo $row['Phone']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Address:</td>
       <td> 
-      <span class="span"><?php echo $row['Address']?></span>
+      <span class="span">&#128204; <?php echo $row['Address']?></span>
     </td>
     </tr>
 
     <tr>
       <td class="ppp">Emergency Contact Name:</td>
-      <td><span class="span"><?php echo $row['EmergencyContactName']?></span></td>
+      <td><span class="span">&#128204; <?php echo $row['EmergencyContactName']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Emergency Contact No:</td>
-      <td><span class="span"><?php echo $row['EmergencyContactPhone']?></span></td> 
+      <td><span class="span">&#128204; <?php echo $row['EmergencyContactPhone']?></span></td> 
 
     </tr>
    
@@ -355,30 +355,30 @@ $row3=mysqli_fetch_assoc($sqldata3);
 
 <tr>
       <td class="ppp">Semester :</td>
-      <td><?php echo $row2['Semester']?></td>
+      <td><span class="span"><?php echo $row2['Semester']?></span></td>
     </tr>
 
 
     <tr>
       <td class="ppp">Enrollment No :</td>
-      <td><?php echo $row2['EnrollmentID']?></td>
+      <td><span class="span"><?php echo $row2['EnrollmentID']?></span></td>
     </tr>
 
    
 
      <tr>
       <td class="ppp">Course ID :</td>
-      <td><?php echo $row2['CourseID']?></td>
+      <td><span class="span"><?php echo $row2['CourseID']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Enrollment Date :</td>
-      <td><?php echo $row2['EnrollmentDate']?></td>
+      <td><span class="span"><?php echo $row2['EnrollmentDate']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">your Status :</td>
-      <td><?php echo $row2['Status']?></td>
+      <td><span class="span"><?php echo $row2['Status']?></span></td>
     </tr>
 
 </table>
@@ -392,32 +392,32 @@ $row3=mysqli_fetch_assoc($sqldata3);
 <table class="tab">
     <tr>
       <td class="ppp">Your Department Name (Emaild you) :</td>
-      <td><?php echo $row3['DepartmentName']?></td>
+      <td><span class="span"><?php echo $row3['DepartmentName']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Your Department ID (Emaild you) :</td>
-      <td><?php echo $row3['DepartmentID']?></td>
+      <td><span class="span"><?php echo $row3['DepartmentID']?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Department Head :</td>
-      <td><?php echo $row3['DepartmentHead']?></td>
+      <td><span class="span"><?php echo $row3['DepartmentHead']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp"> Location:</td>
-      <td><?php echo $row3['Location']?></td>
+      <td><span class="span"><?php echo $row3['Location']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Department Contact No (Emaild you):</td>
-      <td><?php echo $row3['DEPhone']?></td>
+      <td><span class="span"><?php echo $row3['DEPhone']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Department Email:</td>
-      <td><?php echo $row3['DepEmail']?></td>
+      <td><span class="span"><?php echo $row3['DepEmail']?></span></td>
     </tr>
 
 </table>
