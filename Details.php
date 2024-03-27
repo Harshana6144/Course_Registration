@@ -215,11 +215,47 @@ $row3=mysqli_fetch_assoc($sqldata3);
   margin-left:1250px;
   }
 
-  .span{
+  span{
+    color:#000000;
     margin-left:250px;
     font-size:25px;
+    cursor: pointer;
+    font-family: Rubik, sans-serif;
   }
-  
+
+  .hp{
+    margin-left:1200px;
+  }
+
+/*================================================================*/
+
+  .button1:hover {
+  background-color: #3e8e41;
+}
+
+.button1 {
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f4511e;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+  margin-top: 20px;
+
+}
+
+.button1:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translate(4px);
+}
+
 
   </style>
   <title></title>
@@ -234,10 +270,16 @@ $row3=mysqli_fetch_assoc($sqldata3);
   </div>
   <hr>
    <fieldset>
-  <legend>Your Details</legend>
+  <legend>Your Details  </legend>
 
-  <p>&nbsp;</p>
+ <div class="hp">
+  <button class="button1" value="">ADD NEW+</button>
+  <button class="button1" value="">PRINT</button>
+</div>
+ 
   <h3>STUDENT INFORMATION</h3>
+  
+ 
 
   <hr>
 
@@ -310,36 +352,36 @@ $row3=mysqli_fetch_assoc($sqldata3);
 <table class="tab">
     <tr>
     <td class="ppp">Courses:</td>
-      <td><span class="span"><?php echo $row2['CourseName']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['CourseName']?></span></td>
     </tr>
 
     <td class="ppp">Courses ID:</td>
-      <td><span class="span"><?php echo $row2['CourseID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['CourseID']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Selected Reson:</td>
-      <td><span class="span"><?php echo $row2['Description']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['Description']?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Credit Houres:</td>
-      <td><span class="span"><?php echo $row2['CreditHours']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['CreditHours']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Course Start Date:</td>
-      <td><span class="span"><?php echo $row2['StartDate']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['StartDate']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Course End Date:</td>
-      <td><span class="span"><?php echo $row2['EndDate']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['EndDate']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Class No: </td>
-      <td><span class="span"><?php echo $row2['RoomNumber']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['RoomNumber']?></span></td>
     </tr>
   </table>
 
@@ -355,30 +397,30 @@ $row3=mysqli_fetch_assoc($sqldata3);
 
 <tr>
       <td class="ppp">Semester :</td>
-      <td><span class="span"><?php echo $row2['Semester']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['Semester']?></span></td>
     </tr>
 
 
     <tr>
       <td class="ppp">Enrollment No :</td>
-      <td><span class="span"><?php echo $row2['EnrollmentID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['EnrollmentID']?></span></td>
     </tr>
 
    
 
      <tr>
       <td class="ppp">Course ID :</td>
-      <td><span class="span"><?php echo $row2['CourseID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['CourseID']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Enrollment Date :</td>
-      <td><span class="span"><?php echo $row2['EnrollmentDate']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['EnrollmentDate']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">your Status :</td>
-      <td><span class="span"><?php echo $row2['Status']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row2['Status']?></span></td>
     </tr>
 
 </table>
@@ -392,39 +434,39 @@ $row3=mysqli_fetch_assoc($sqldata3);
 <table class="tab">
     <tr>
       <td class="ppp">Your Department Name (Emaild you) :</td>
-      <td><span class="span"><?php echo $row3['DepartmentName']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row3['DepartmentName']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Your Department ID (Emaild you) :</td>
-      <td><span class="span"><?php echo $row3['DepartmentID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row3['DepartmentID']?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Department Head :</td>
-      <td><span class="span"><?php echo $row3['DepartmentHead']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row3['DepartmentHead']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp"> Location:</td>
-      <td><span class="span"><?php echo $row3['Location']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row3['Location']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Department Contact No (Emaild you):</td>
-      <td><span class="span"><?php echo $row3['DEPhone']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row3['DEPhone']?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Department Email:</td>
-      <td><span class="span"><?php echo $row3['DepEmail']?></span></td>
+      <td><span class="span">&#128204;<?php echo $row3['DepEmail']?></span></td>
     </tr>
 
 </table>
 
 <div class="button-container">
 <button class="button" value="">Delete</button>
-<button class="button" value="">Delete</button>
+<button class="button" value="">Edit</button>
 </div> 
 <p-->
   <!--button class="button" value="">Edit</button-->
