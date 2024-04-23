@@ -14,6 +14,8 @@ $sqldata3=$con->query($sql3);
 $row3=mysqli_fetch_assoc($sqldata3);
 
 
+
+
 ?>
 
 
@@ -285,15 +287,17 @@ $row3=mysqli_fetch_assoc($sqldata3);
 
   <hr>
 
+
+
   <table class="tab">
     <tr >
       <td class="ppp">Student ID:</td>
-      <td ><!--input style="width:850px ;" type="text"  id="student_id" name="student_id" value=""--><span class="span">&#128204; <?php echo $row['StudentId']?></span></td>
+      <td ><!--input style="width:850px ;" type="text"  id="student_id" name="student_id" value=""--><span class="span">&#128204;<?php echo $isRowValid ? $row['StudentId'] : "Data not available"; ?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">First Name:</td>
-      <td><!--input style="width:850px ;" type="text"  id="first_name" name="first_name" value=""--><span class="span">&#128204; <?php echo $row['FirstName']?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="first_name" name="first_name" value=""--><span class="span">&#128204; <?php echo $row['FirstName'] ?></span></td>
     </tr>
 
      <tr>
@@ -341,7 +345,7 @@ $row3=mysqli_fetch_assoc($sqldata3);
    
  </table>
 
- <form method="post" action="delete.php">
+ <form method="post" action="">
     <div class="button-container">
         <button class="button" name="delete_student" value="<?php echo $row['StudentId']; ?>">Delete</button>
         <input type="hidden" name="record_id" value="<?php echo $row['StudentId']; ?>">
