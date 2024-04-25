@@ -1,5 +1,7 @@
 <?php
 require('./db.php');
+
+$conn=crud::conect();
 /*session_start(); // Start the session
 
 if (isset($_SESSION['stID']) && !empty($_SESSION['stID'])) {
@@ -22,7 +24,7 @@ if (isset($_POST['submit'])) {
     $Ename = $_POST['Ename'];
     $Eno = $_POST['Eno'];
     
-    $result=mysqli_query($conn,$sql);
+    
 
     if (
         !empty($first_name) && !empty($last_name) && !empty($dob) &&
@@ -37,8 +39,10 @@ if (isset($_POST['submit'])) {
         if ($EmailExists > 0) {
             echo "<script type='text/javascript'> alert('data already exists.')</script>";
         } else {
-            $p = crud::conect()->prepare('INSERT INTO students_table(StudentId ,FirstName,LastName,DateOfBirth,Gender,Email,Phone,Address,EmergencyContactName,EmergencyContactPhone) VALUES(:s,:f,:L,:d,:g,:e,:c,:a,:Ec,:En)');
-            
+            $p = crud::conect()->prepare('UPDATE students_table set(StudentId=?,FirstName=?,LastName=?,DateOfBirth=?,Gender=?,Email=?,Phone=?,Address=?,EmergencyContactName=?,EmergencyContactPhone=? WHERE $stID=?) VALUES(:s,:f,:L,:d,:g,:e,:c,:a,:Ec,:En)');
+            mysqli_stmt_bind_param($stmt,"ssssi",$stID,$first_name,$last_name,$dob,$Gender,$Email,$contact_no,$Address,$Ename,$Eno);
+            $result=mysqli_query($conn,$sql);
+
             $p->bindValue(':s', $stID);
             $p->bindValue(':f', $first_name);
             $p->bindValue(':L', $last_name);
@@ -78,6 +82,12 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="rounded-div">
         <span class="borderAAA"></span>
+
+        <?php
+        $sql="SELECT * FROM `Course_Registration` WHERE StudentId  = $stID LIMIT 1";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_assoc($result);
+        ?>
         <form action="" method="post" autocomplete="off">
             
         <h2>EDIT STUDENT INFORMATION&#128100;</h2>
