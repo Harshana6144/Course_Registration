@@ -12,7 +12,7 @@ if (isset($_GET['stID'])) {
 
     // Execute the query
     if ($con->query($delete_sql) === TRUE) {
-        header("Location:index.php?msg=Data deleted successfully");
+        header("Location:Details.php?msg=Data deleted successfully");
         
     } else {
         echo "Error deleting record: " . $con->error;

@@ -305,55 +305,57 @@ $isRowValid = isset($row);
 
      <tr>
       <td class="ppp">Last Name:</td>
-      <td><!--input style="width:850px ;" type="text"  id="last_name" name="last_name" value=""--><span class="span">&#128204; <?php echo $row['LastName']?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="last_name" name="last_name" value=""--><span class="span">&#128204; <?php echo $isRowValid ? $row['LastName'] :"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Date of Birth:</td>
-      <td><!--input style="width:850px ;" type="text"  id="dob" name="dob" value=" "--><span class="span">&#128204; <?php echo $row['DateOfBirth']?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="dob" name="dob" value=" "--><span class="span">&#128204; <?php echo $isRowValid ? $row['DateOfBirth'] :"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Gender:</td>
-      <td><span class="span">&#128204; <?php echo $row['Gender']?></span></span></td>
+      <td><span class="span">&#128204; <?php echo $isRowValid ? $row['Gender'] :"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Email</td>
-      <td><span class="span">&#128204; <?php echo $row['Email']?></span></td>
+      <td><span class="span">&#128204; <?php echo $isRowValid ? $row['Email'] :"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Contact Number:</td>
-      <td><span class="span">&#128204; <?php echo $row['Phone']?></span></td>
+      <td><span class="span">&#128204; <?php echo $isRowValid ? $row['Phone']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Address:</td>
       <td> 
-      <span class="span">&#128204; <?php echo $row['Address']?></span>
+      <span class="span">&#128204; <?php echo $isRowValid ?  $row['Address']: "Data not available";?></span>
     </td>
     </tr>
 
     <tr>
       <td class="ppp">Emergency Contact Name:</td>
-      <td><span class="span">&#128204; <?php echo $row['EmergencyContactName']?></span></td>
+      <td><span class="span">&#128204; <?php echo $isRowValid ? $row['EmergencyContactName']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Emergency Contact No:</td>
-      <td><span class="span">&#128204; <?php echo $row['EmergencyContactPhone']?></span></td> 
+      <td><span class="span">&#128204; <?php echo $isRowValid ? $row['EmergencyContactPhone']:"Data not available";?></span></td> 
 
     </tr>
    
  </table>
 
     <div class="button-container">
-      <from action ="delete.php" method="POST">
-      <input type="hidden" name="'stID'" value="<?php echo $row['StudentId']; ?>">
-        <button class="button" type="submit">Delete</button>
-</form>
-
+      <from action ="delete.php" method="POST" >
+      <input type="hidden" name="'stID" value="<?php echo $row['StudentId']; ?>">
+      <!-- Link to delete student -->
+      <a href="delete.php?stID=<?php echo $row['StudentId']; ?>" onclick="return confirm('Are you sure you want to delete this student?');" class="button">Delete</a>
+      
+    </form>
+</a>
 
         
         <button class="button" value="">Edit</button> 
