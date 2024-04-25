@@ -1,6 +1,9 @@
 <?php
 
 $con=mysqli_connect('localhost','root','','course_registration');
+
+
+
 $sql1="SELECT * FROM students_table ";
 $sqldata1=$con->query($sql1);
 $row=mysqli_fetch_assoc($sqldata1);
@@ -297,7 +300,7 @@ $isRowValid = isset($row);
 
     <tr>
       <td class="ppp">First Name:</td>
-      <td><!--input style="width:850px ;" type="text"  id="first_name" name="first_name" value=""--><span class="span">&#128204; <?php echo $row['FirstName'] ?></span></td>
+      <td><!--input style="width:850px ;" type="text"  id="first_name" name="first_name" value=""--><span class="span">&#128204; <?php echo $isRowValid ? $row['FirstName'] :"Data not available"; ?></span></td>
     </tr>
 
      <tr>
@@ -345,13 +348,17 @@ $isRowValid = isset($row);
    
  </table>
 
- <form method="post" action="">
     <div class="button-container">
-        <button class="button" name="delete_student" value="<?php echo $row['StudentId']; ?>">Delete</button>
-        <input type="hidden" name="record_id" value="<?php echo $row['StudentId']; ?>">
+      <from action ="delete.php" method="POST">
+      <input type="hidden" name="'stID'" value="<?php echo $row['StudentId']; ?>">
+        <button class="button" type="submit">Delete</button>
+</form>
+
+
+        
         <button class="button" value="">Edit</button> 
     </div>
-</form>
+
 
 
   <!--p>&nbsp;</p-->

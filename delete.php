@@ -1,23 +1,25 @@
 <?php
-// Connect to the database
+
+// Database connection
 $con = mysqli_connect('localhost', 'root', '', 'course_registration');
 
-// Check if the delete button is clicked
-if (isset($_POST['delete_student'])) {
-    // Get the ID of the record to be deleted
-    $record_id = $_POST['record_id'];
+// Check if the 'student_id' parameter is set
+if (isset($_GET['stID'])) {
+    $stID = $_GET['stID'];
 
-    // Prepare the delete query
-    $sql = "DELETE FROM students_table WHERE StudentId = '$record_id'";
+    // Prepare the SQL DELETE query
+    $delete_sql = "DELETE FROM students_table WHERE StudentId = '$stID'";
 
-    // Execute the delete query
-    if (mysqli_query($con, $sql)) {
-        echo "Record deleted successfully";
+    // Execute the query
+    if ($con->query($delete_sql) === TRUE) {
+        header("Location:index.php?msg=Data deleted successfully");
+        
     } else {
-        echo "Error deleting record: " . mysqli_error($con);
+        echo "Error deleting record: " . $con->error;
     }
+} else {
+    echo "Student ID not provided.";
 }
 
-// Close the database connection
 mysqli_close($con);
 ?>
