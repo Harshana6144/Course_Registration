@@ -357,8 +357,10 @@ $isRowValid = isset($row);
     </form>
 </a>
 
+        <a href="edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+        <!--button class="button" type="button" onclick="window.location.href='edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>">Edit</button-->
+
         
-        <button class="button" value="">Edit</button> 
     </div>
 
 
