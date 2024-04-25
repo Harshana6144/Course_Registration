@@ -14,7 +14,7 @@ $sqldata3=$con->query($sql3);
 $row3=mysqli_fetch_assoc($sqldata3);
 
 
-
+$isRowValid = isset($row);
 
 ?>
 

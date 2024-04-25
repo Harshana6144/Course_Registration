@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="rounded-div">
         <span class="borderAAA"></span>
-        <form action="delete.php" method="post" autocomplete="off">
+        <form action="" method="post" autocomplete="off">
             
         <h2>STUDENT INFORMATION&#128100;</h2>
             
@@ -165,7 +165,7 @@ if (isset($_POST['submit'])) {
             <div class="Apple">
 
             
-            <input type="submit" value="submit" name="submit"><a href=""></a>
+            <input type="submit" value="submit" name="submit"></a>
             <!--button>test</button-->
          
            

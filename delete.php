@@ -1,36 +1,23 @@
 <?php
-/* Connect to the database
-$conn = mysqli_connect('localhost', 'root', '', 'course_registration');
+// Connect to the database
+$con = mysqli_connect('localhost', 'root', '', 'course_registration');
 
+// Check if the delete button is clicked
+if (isset($_POST['delete_student'])) {
+    // Get the ID of the record to be deleted
+    $record_id = $_POST['record_id'];
 
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    // Prepare the delete query
+    $sql = "DELETE FROM students_table WHERE StudentId = '$record_id'";
+
+    // Execute the delete query
+    if (mysqli_query($con, $sql)) {
+        echo "Record deleted successfully";
+    } else {
+        echo "Error deleting record: " . mysqli_error($con);
+    }
 }
 
-// SQL query to delete a record
-$sql ="DELETE FROM  students_table WHERE  StudentId='StudentId'";
-
-if (mysqli_query($conn, $sql)) {
-    echo "Record deleted successfully";
-} else {
-    echo "Error deleting record: " . mysqli_error($conn);
-}
-
-// Close connection
-mysqli_close($conn);
-
-/*include "db.php";
-
-$StudentId=$_GET['StudentId'];
-
-$sql="DELETE FROM from students_table WHERE StudentId= $StudentId"
-$p=mysqli_query($con,$sql);
-
-if($p){
-    header("Location:Details.php?msg=Data deleted successfully");
-}else{
-    echo"Failed:".mysqli_error($con);
-    header("Location:records.php?msg=Data deleted faild");
-}*/
+// Close the database connection
+mysqli_close($con);
 ?>
