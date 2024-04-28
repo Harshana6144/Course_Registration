@@ -7,9 +7,9 @@ $conn = crud::conect();
 // Get student ID from GET or POST data
 $stID = isset($_GET['stID']) ? $_GET['stID'] : (isset($_POST['stID']) ? $_POST['stID'] : null);
 
-if (!$stID) {
+/*if (!$stID) {
     die("Student ID not provided.");
-}
+}*/
 
 if (isset($_POST['submit'])) {
     // Initialize an array to store the fields to update
@@ -98,7 +98,9 @@ if (isset($_POST['submit'])) {
     }
 }
 
+
 // Fetch student registration data
+
 $sql = "SELECT * FROM `students_table` WHERE StudentId = :id LIMIT 1";
 $stmt = $conn->prepare($sql);
 $stmt->bindValue(':id', $stID);
@@ -107,8 +109,12 @@ $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch the result
 
 $row = $result !== false ? $result : array(); // Assign the fetched data to $row
+ 
+
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -154,11 +160,11 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
                 <p style="color: #8f8f8f;">Please select your gender:</p>
 
                 <label style="margin-right: 29px; color: white;">
-                    <input type="radio" id="Gender" name="Gender" value="MALE" <?php if ($row['Gender'] === 'MALE') echo 'checked'; ?>> MALE
+                    <input type="radio" id="Gender" name="Gender" value="MALE" <?php if ($row['Gender'] && $row['Gender'] === 'MALE') echo 'checked'; ?>> MALE
                 </label>
 
                 <label style="margin-right: 29px; color: white;">
-                    <input type="radio" id="Gender" name="Gender" value="FEMALE" <?php if ($row['Gender'] === 'FEMALE') echo 'checked'; ?>> FEMALE
+                    <input type="radio" id="Gender" name="Gender" value="FEMALE" <?php if ($row['Gender'] && $row['Gender'] === 'FEMALE') echo 'checked'; ?>> FEMALE
                 </label>
             </div>
 
@@ -195,10 +201,10 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
             <br> 
 
             <div class="Apple">
-                <input type="submit" value="Update" name="submit">
+                <input type="submit" value="Update" name="submit" onclick="return confirm('UPDATE SUCCUESS');">
                 <input type="reset" value="Reset">
 
-                <button type="button"><a href="index.php">Back</a></button>
+                <button type="button">Back</a></button>
             </div>
         </form>
 

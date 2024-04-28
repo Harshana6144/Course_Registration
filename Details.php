@@ -296,6 +296,7 @@ $isRowValid = isset($row);
     <tr >
       <td class="ppp">Student ID:</td>
       <td ><!--input style="width:850px ;" type="text"  id="student_id" name="student_id" value=""--><span class="span">&#128204;<?php echo $isRowValid ? $row['StudentId'] : "Data not available"; ?></span></td>
+      
     </tr>
 
     <tr>
@@ -359,6 +360,10 @@ $isRowValid = isset($row);
 
         <a href="edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
         <!--button class="button" type="button" onclick="window.location.href='edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>">Edit</button-->
+        <!-- Button that triggers JavaScript redirection -->
+        <button class="button" value=""><a href="edit STUDENT REGISTRATION.php">Edit<a></button> 
+        
+
 
         
     </div>
