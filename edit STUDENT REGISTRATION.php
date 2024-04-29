@@ -7,9 +7,9 @@ $conn = crud::conect();
 // Get student ID from GET or POST data
 $stID = isset($_GET['stID']) ? $_GET['stID'] : (isset($_POST['stID']) ? $_POST['stID'] : null);
 
-/*if (!$stID) {
+if (!$stID) {
     die("Student ID not provided.");
-}*/
+}
 
 if (isset($_POST['submit'])) {
     // Initialize an array to store the fields to update
