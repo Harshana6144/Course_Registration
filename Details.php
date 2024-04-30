@@ -12,6 +12,10 @@ $sql2="SELECT * FROM courses_table inner join enrollments_table";
 $sqldata2=$con->query($sql2);
 $row2=mysqli_fetch_assoc($sqldata2);
 
+/*$sql4="SELECT * FROM enrollments_table";
+$sqldata4=$con->query($sql4);
+$row4=mysqli_fetch_assoc($sqldata);*/
+
 $sql3="SELECT * FROM departments_table";
 $sqldata3=$con->query($sql3);
 $row3=mysqli_fetch_assoc($sqldata3);

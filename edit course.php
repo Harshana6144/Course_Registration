@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
     if (count($updates) > 0) {
         // Build the dynamic UPDATE query
         $sql = "UPDATE courses_table SET ";
-        $setParts = array();
+        $setParts = [];
 
         foreach ($updates as $key => $value) {
             $setParts[] = "$key = :$key";
@@ -82,7 +82,8 @@ if (isset($_POST['submit'])) {
 }
 
 // Fetch the course data to populate the form
-$sql = "SELECT * FROM `courses_table` WHERE CourseID = :id LIMIT 1";
+$sql = "SELECT * FROM `courses_table` INNER JOIN enrollments_table ON courses_table.CourseID = enrollments_table.CourseID WHERE courses_table.CourseID = :id LIMIT 1";
+
 $stmt = $conn->prepare($sql);
 $stmt->bindValue(':id', $course_id); // Corrected variable binding
 $stmt->execute();
@@ -112,16 +113,26 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to `$ro
         <h2>EDIT COURSE</h2>
             <br>
             <label for="Course">Course</label>
-            <select name="Course" id="Course" value="">
-                <option value="<?php echo $row['CourseName'] ?>">Courses</option>
-                <option value="BSc(Hons) Computer Systems & Network Engineering"> BSc(Hons)Computer Systems & Network Engineering</option>
-                <option value="BSc(Hons)Software Engineering">BSc(Hons) Software Engineering</option>
-                <option value="BSc(Hons)Computer Systems Engineering">BSc(Hons) Computer Systems Engineering</option>
-                <option value="BSc(Hons)Specialising in Cyber Security">BSc(Hons) Specialising in Cyber Security</option>
-                <option value="BSc(Hons)Specialising in Interactive Media">BSc(Hons) Specialising in Interactive Media</option>
-                <option value="BSc(Hons)Specialising in Data Science">BSc(Hons) Specialising in Data Science</option>
-                
-            </select>
+            <?php
+$currentCourseName = $row['CourseName'] ?? ''; // Get the current course name
+?>
+
+<select name="Course" id="Course">
+    <option value="">Select a Course</option> <!-- Default option for empty value -->
+
+    <!-- Generate options with conditional 'selected' attribute -->
+    <option value="BSc(Hons) Computer Systems & Network Engineering" <?php echo $currentCourseName == "BSc(Hons) Computer Systems & Network Engineering" ? 'selected' : ''; ?>>BSc(Hons) Computer Systems & Network Engineering</option>
+
+    <option value="BSc(Hons) Software Engineering" <?php echo $currentCourseName == "BSc(Hons) Software Engineering" ? 'selected' : ''; ?>>BSc(Hons) Software Engineering</option>
+
+    <option value="BSc(Hons) Computer Systems Engineering" <?php echo $currentCourseName == "BSc(Hons) Computer Systems Engineering" ? 'selected' : ''; ?>>BSc(Hons) Computer Systems Engineering</option>
+
+    <option value="BSc(Hons) Specialising in Cyber Security" <?php echo $currentCourseName == "BSc(Hons) Specialising in Cyber Security" ? 'selected' : ''; ?>>BSc(Hons) Specialising in Cyber Security</option>
+
+    <option value="BSc(Hons) Specialising in Interactive Media" <?php echo $currentCourseName == "BSc(Hons) Specialising in Interactive Media" ? 'selected' : ''; ?>>BSc(Hons) Specialising in Interactive Media</option>
+
+    <option value="BSc(Hons) Specialising in Data Science" <?php echo $currentCourseName == "BSc(Hons) Specialising in Data Science" ? 'selected' : ''; ?>>BSc(Hons) Specialising in Data Science</option>
+</select>
            
             
             <div class="inputBox">
@@ -148,14 +159,14 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to `$ro
             
             
             <div class="inputBox">
-            <input  type="date" id="s_dob" name="s_dob" >
+            <input  type="date" id="s_dob" name="s_dob" value="<?php echo $row['StartDate'] ?? ''; ?>">
             <span style="margin-left: px;">Start Date:</span>
             <i></i>
             </div>
 
 
             <div class="inputBox">
-            <input type="date" id="e_dob" name="e_dob" >
+            <input type="date" id="e_dob" name="e_dob" value="<?php echo $row['EndDate'] ?? ''; ?>">
             <span>End Date:</span>
            
             <i></i>
@@ -165,7 +176,7 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to `$ro
 
             <div class="inputBox">
             <!--p>Class No: :</p-->
-            <input type="text" id="ClassNo" name="ClassNo" >
+            <input type="text" id="ClassNo" name="ClassNo" value="<?php echo $row['RoomNumber'] ?? ''; ?>">
             <span>Class No:</span>
             <i></i>
             </div>
