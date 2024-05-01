@@ -455,7 +455,9 @@ $isRowValid = isset($row);
 </table>
 <div class="button-container">
 <button class="button" value="">Delete</button>
-<button class="button" value="">Edit</button> 
+<a href="edit ENROLLMENT DETAILS.php?course_id=<?php echo $row2['CourseID']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+
+
 </div>
 <!--p>&nbsp;</p-->
 <h3>DEPARTMENT DEATILS</h3>
@@ -495,7 +497,7 @@ $isRowValid = isset($row);
 
 <div class="button-container">
 <button class="button" value="">Delete</button>
-<a href="edit department details.php?DepartmentID=<?php echo $row3['DepartmentID']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+<a href="edit department details.php?Dep_ID=<?php echo $row3['DepartmentID']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
 
 </div> 
 

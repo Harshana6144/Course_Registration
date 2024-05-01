@@ -73,7 +73,6 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
 
         echo "<script>alert('Successfully updated course information.');</script>";
-
         header("Location: Details.php");
         exit(); // Ensure exit to prevent further execution
     } else {
@@ -83,6 +82,7 @@ if (isset($_POST['submit'])) {
 
 // Fetch the course data to populate the form
 $sql = "SELECT * FROM `courses_table` INNER JOIN enrollments_table ON courses_table.CourseID = enrollments_table.CourseID WHERE courses_table.CourseID = :id LIMIT 1";
+//$sql = "SELECT * FROM `enrollments_table` INNER JOIN courses_table ON enrollments_table.CourseID = courses_table.CourseID WHERE enrollments_table.CourseID = :id LIMIT 1";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindValue(':id', $course_id); // Corrected variable binding
