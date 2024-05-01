@@ -1,76 +1,79 @@
 <?php
 require ('./db.php');
 
-$conn=crud::conect();
+$conn = crud::conect();
 
 $course_id = isset($_GET['course_id']) ? $_GET['course_id'] : (isset($_POST['course_id']) ? $_POST['course_id'] : null);
 
-if(empty($course_id)){
+if (empty($course_id)) {
     die("Course ID not Provided.");
 }
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $updates = array();
 
-    if(isset($_POST['course_id']) && !empty($_POST['course_id'])){
+    if (isset($_POST['course_id']) && !empty($_POST['course_id'])) {
         $updates['CourseID'] = $_POST['course_id'];
     }
 
-    if(isset($_POST['Enrollment_No']) && !empty($_POST['Enrollment_No'])){
+    if (isset($_POST['Enrollment_No']) && !empty($_POST['Enrollment_No'])) {
         $updates['EnrollmentID'] = $_POST['Enrollment_No'];
     }
 
-    if(isset($_POST['Semester']) && !empty($_POST['Semester'])){
+    if (isset($_POST['Semester']) && !empty($_POST['Semester'])) {
         $updates['Semester'] = $_POST['Semester'];
     }
 
-    if(isset($_POST['EN_dob']) && !empty($_POST['EN_dob'])){
+    if (isset($_POST['EN_dob']) && !empty($_POST['EN_dob'])) {
         $updates['EnrollmentDate'] = $_POST['EN_dob'];
     }
 
-    if(isset($_POST['stetus']) && !empty($_POST['stetus'])){
+    if (isset($_POST['stetus']) && !empty($_POST['stetus'])) {
         $updates['Status'] = $_POST['stetus'];
     }
 
-    if(count($updates)>0){
-        $sql="UPDATE enrollments_table SET";
+    if (count($updates) > 0) {
+        $sql = "UPDATE enrollments_table SET ";  
         $setParts = [];
 
+        
         foreach ($updates as $key => $value) {
-            $setParts[] = "$key = :$key";
+            $setParts[] = "$key = :$key";  
         }
 
-        $sql .= implode(" , ",$setParts);
-        $sql .= "WHERE CourseID = :id";
+        $sql .= implode(" , ", $setParts);  
+        $sql .= " WHERE CourseID = :id";  
 
+        // Prepare the SQL statement
         $stmt = $conn->prepare($sql);
 
-        foreach($updates as $key => $value){
-            $stmt->bindValue(":" .$key,$value);
+        // Bind all parameters
+        foreach ($updates as $key => $value) {
+            $stmt->bindValue(":" . $key, $value); 
         }
 
-        $stmt->bindValue(':id',$course_id);
-        $stmt->execute();
+        // Bind the course_id parameter
+        $stmt->bindValue(':id', $course_id);  // ensure CourseID binding
+        $stmt->execute();  // execute the statement
 
         echo "<script>alert('Successfully updated course information');</script>";
         header("Location:Details.php");
         exit();
-    }else{
+    } else {
         echo "<script>alert('No change to update');</script>";
     }
-
 }
 
-//$sql = "SELECT * FROM `enrollments_table` INNER JOIN courses_table ON enrollments_table.CourseID = courses_table.CourseID WHERE enrollments_table.CourseID = :id LIMIT 1";
 $sql = "SELECT * FROM `courses_table` INNER JOIN enrollments_table ON courses_table.CourseID = enrollments_table.CourseID WHERE courses_table.CourseID = :id LIMIT 1";
 
-$stmt =$conn->prepare($sql);
-$stmt->bindValue(':id',$course_id);
-$stmt->execute();
+$stmt = $conn->prepare($sql);
+$stmt->bindValue(':id', $course_id);  
+$stmt->execute();  
 
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
-$row = $result !==false ? $result : array();
+$row = $result !== false ? $result : array();
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -119,12 +122,12 @@ $row = $result !==false ? $result : array();
             <?php
             $currentSemester = $row['Semester'] ?? '';
             ?>
-            <select name="Semester" id="Semester" required>
+            <select name="Semester" id="Semester" >
                 <option value="" >Semester</option>
                 <option value="Semester 1" <?php echo $currentSemester =="Semester 1" ? 'selected' :'';?>> Semester 1 </option>
-                <option value="Semester 1" <?php echo $currentSemester =="Semester 2" ? 'selected' :'';?>> Semester 2 </option>
-                <option value="Semester 1" <?php echo $currentSemester =="Semester 3" ? 'selected' :'';?>> Semester 3 </option>
-                <option value="Semester 1" <?php echo $currentSemester =="Semester 4" ? 'selected' :'';?>> Semester 4 </option>
+                <option value="Semester 2" <?php echo $currentSemester =="Semester 2" ? 'selected' :'';?>> Semester 2 </option>
+                <option value="Semester 3" <?php echo $currentSemester =="Semester 3" ? 'selected' :'';?>> Semester 3 </option>
+                <option value="Semester 4" <?php echo $currentSemester =="Semester 4" ? 'selected' :'';?>> Semester 4 </option>
                 
                 
             </select>
