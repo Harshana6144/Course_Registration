@@ -34,8 +34,8 @@ if(isset($_POST['submit'])){
 
             $_SESSION['course_id'] = $course_id;
 
-            //header("Location:ENROLLMENT DEATILS.php");
-            //exit();
+            header("Location:ENROLLMENT DEATILS.php");
+            exit();
             echo "<script type='text/javascript'> alert('Successfully Saved')</script>";
         }
     } else {

@@ -39,8 +39,8 @@ if(isset($_POST['submit'])){
             $p->bindValue(':C', $stetus);
             $p->execute();
 
-            //header("Location:DEPARTMENT DEATILS.php");
-           // exit();
+            header("Location:DEPARTMENT DEATILS.php");
+            exit();
             echo "<script type='text/javascript'> alert('Successfully Saved')</script>"; 
         }
     } else {

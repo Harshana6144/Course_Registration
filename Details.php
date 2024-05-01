@@ -22,6 +22,10 @@ $row3=mysqli_fetch_assoc($sqldata3);
 
 
 $isRowValid = isset($row);
+$isRowValid2 = isset($row2);
+$isRowValid3 = isset($row3);
+
+
 
 ?>
 
@@ -57,8 +61,7 @@ $isRowValid = isset($row);
       width: 90%;
       margin-left: auto; 
       margin-right: auto;
-      
-    }
+      }
 
     .tab tr {
       background-color: #04AA6D;
@@ -221,7 +224,7 @@ $isRowValid = isset($row);
     }
 
   .button-container{
-  margin-left:1250px;
+  margin-left:1260px;
   }
 
   span{
@@ -233,7 +236,7 @@ $isRowValid = isset($row);
   }
 
   .hp{
-    margin-left:1200px;
+    margin-left:1150px;
   }
 
 /*================================================================*/
@@ -265,9 +268,26 @@ $isRowValid = isset($row);
   transform: translate(4px);
 }
 
+@media print {
+  .button-container,
+  .button1,
+  .print{
+    display:none;
+  }
+}
+
+
+
 
   </style>
   <title></title>
+
+  <script>
+    function printPage(){
+      window.print();
+    }
+  </script>
+
 </head>
 <body>
 
@@ -284,8 +304,14 @@ $isRowValid = isset($row);
   <legend>Your Details  </legend>
 
  <div class="hp">
-  <button class="button1" value="">ADD NEW+</button>
-  <button class="button1" value="">PRINT</button>
+ 
+  <a href="index.php"  onclick="return confirm('You want to add new details');" class="button1" value="">ADD NEW+</a>
+  <button class="button1" onclick="printPage()" >PRINT</button>
+ 
+  
+ 
+  
+  
 </div>
  
   <h3>STUDENT INFORMATION</h3>
@@ -354,15 +380,8 @@ $isRowValid = isset($row);
  </table>
 
     <div class="button-container">
-      <from action ="delete.php" method="POST" >
-      <input type="hidden" name="'stID" value="<?php echo $row['StudentId']; ?>">
-      <!-- Link to delete student -->
-      <a href="delete.php?stID=<?php echo $row['StudentId']; ?>" onclick="return confirm('Are you sure you want to delete this student?');" class="button">Delete</a>
       
-    </form>
-</a>
-
-        <a href="edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+        <a href="edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>" onclick="return confirm('you want to edit details?');" class="button">EDIT DETAILS</a>
         <!--button class="button" type="button" onclick="window.location.href='edit STUDENT REGISTRATION.php?stID=<?php echo $row['StudentId']; ?>">Edit</button-->
         <!-- Button that triggers JavaScript redirection -->
        
@@ -380,42 +399,41 @@ $isRowValid = isset($row);
 <table class="tab">
     <tr>
     <td class="ppp">Courses:</td>
-      <td><span class="span">&#128204;<?php echo $row2['CourseName']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['CourseName']:"Data not available";?></span></td>
     </tr>
 
     <td class="ppp">Courses ID:</td>
-      <td><span class="span">&#128204;<?php echo $row2['CourseID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['CourseID']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Selected Reson:</td>
-      <td><span class="span">&#128204;<?php echo $row2['Description']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['Description']:"Data not available";?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Credit Houres:</td>
-      <td><span class="span">&#128204;<?php echo $row2['CreditHours']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['CreditHours']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Course Start Date:</td>
-      <td><span class="span">&#128204;<?php echo $row2['StartDate']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['StartDate']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Course End Date:</td>
-      <td><span class="span">&#128204;<?php echo $row2['EndDate']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['EndDate']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Class No: </td>
-      <td><span class="span">&#128204;<?php echo $row2['RoomNumber']?></span></td>
+      <td><span class="span">&#128204;<?php echo  $isRowValid2 ? $row2['RoomNumber']:"Data not available";?></span></td>
     </tr>
   </table>
 
 <div class="button-container">
-<button class="button" value="">Delete</button>
-<a href="edit course.php?course_id=<?php echo $row2['CourseID']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+<a href="edit course.php?course_id=<?php echo $row2['CourseID']; ?>" onclick="return confirm('you want to edit details?');" class="button">EDIT DETAILS</a>
 
 </div> 
 
@@ -426,36 +444,35 @@ $isRowValid = isset($row);
 
 <tr>
       <td class="ppp">Semester :</td>
-      <td><span class="span">&#128204;<?php echo $row2['Semester']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['Semester']:"Data not available";?></span></td>
     </tr>
 
 
     <tr>
       <td class="ppp">Enrollment No :</td>
-      <td><span class="span">&#128204;<?php echo $row2['EnrollmentID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['EnrollmentID']:"Data not available";?></span></td>
     </tr>
 
    
 
      <tr>
       <td class="ppp">Course ID :</td>
-      <td><span class="span">&#128204;<?php echo $row2['CourseID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['CourseID']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Enrollment Date :</td>
-      <td><span class="span">&#128204;<?php echo $row2['EnrollmentDate']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['EnrollmentDate']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">your Status :</td>
-      <td><span class="span">&#128204;<?php echo $row2['Status']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid2 ? $row2['Status']:"Data not available";?></span></td>
     </tr>
 
 </table>
 <div class="button-container">
-<button class="button" value="">Delete</button>
-<a href="edit ENROLLMENT DETAILS.php?course_id=<?php echo $row2['CourseID']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+<a href="edit ENROLLMENT DETAILS.php?course_id=<?php echo $row2['CourseID']; ?>" onclick="return confirm('you want to edit details?');" class="button">EDIT DETAILS</a>
 
 
 </div>
@@ -465,39 +482,45 @@ $isRowValid = isset($row);
 <table class="tab">
     <tr>
       <td class="ppp">Your Department Name (Emaild you) :</td>
-      <td><span class="span">&#128204;<?php echo $row3['DepartmentName']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid3 ? $row3['DepartmentName']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Your Department ID (Emaild you) :</td>
-      <td><span class="span">&#128204;<?php echo $row3['DepartmentID']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid3 ? $row3['DepartmentID']:"Data not available";?></span></td>
     </tr>
 
      <tr>
       <td class="ppp">Department Head :</td>
-      <td><span class="span">&#128204;<?php echo $row3['DepartmentHead']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid3 ? $row3['DepartmentHead']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp"> Location:</td>
-      <td><span class="span">&#128204;<?php echo $row3['Location']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid3 ? $row3['Location']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Department Contact No (Emaild you):</td>
-      <td><span class="span">&#128204;<?php echo $row3['DEPhone']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid3 ? $row3['DEPhone']:"Data not available";?></span></td>
     </tr>
 
     <tr>
       <td class="ppp">Department Email:</td>
-      <td><span class="span">&#128204;<?php echo $row3['DepEmail']?></span></td>
+      <td><span class="span">&#128204;<?php echo $isRowValid3 ? $row3['DepEmail']:"Data not available";?></span></td>
     </tr>
 
 </table>
 
 <div class="button-container">
-<button class="button" value="">Delete</button>
-<a href="edit department details.php?Dep_ID=<?php echo $row3['DepartmentID']; ?>" onclick="return confirm('you want to edit details?');" class="button">Edit</a>
+
+<a href="edit department details.php?Dep_ID=<?php echo $row3['DepartmentID']; ?>" onclick="return confirm('you want to edit details?');" class="button">EDIT DETAILS</a>
+
+<form action ="delete tables.php" method="post" onsubmit="return confirm('Are you sure you want to delete all data?');">
+      <button type="submit" name="delete_all" class="button">DELETE ALL DATA</button>
+      
+    </form>
+
 
 </div> 
 

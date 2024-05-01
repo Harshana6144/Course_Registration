@@ -123,7 +123,7 @@ $row = $result !== false ? $result : array();
             $currentSemester = $row['Semester'] ?? '';
             ?>
             <select name="Semester" id="Semester" >
-                <option value="" >Semester</option>
+                
                 <option value="Semester 1" <?php echo $currentSemester =="Semester 1" ? 'selected' :'';?>> Semester 1 </option>
                 <option value="Semester 2" <?php echo $currentSemester =="Semester 2" ? 'selected' :'';?>> Semester 2 </option>
                 <option value="Semester 3" <?php echo $currentSemester =="Semester 3" ? 'selected' :'';?>> Semester 3 </option>

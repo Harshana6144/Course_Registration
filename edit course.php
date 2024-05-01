@@ -118,7 +118,7 @@ $currentCourseName = $row['CourseName'] ?? ''; // Get the current course name
 ?>
 
 <select name="Course" id="Course">
-    <option value="">Select a Course</option> <!-- Default option for empty value -->
+    
 
     <!-- Generate options with conditional 'selected' attribute -->
     <option value="BSc(Hons) Computer Systems & Network Engineering" <?php echo $currentCourseName == "BSc(Hons) Computer Systems & Network Engineering" ? 'selected' : ''; ?>>BSc(Hons) Computer Systems & Network Engineering</option>

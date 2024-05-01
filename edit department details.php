@@ -41,27 +41,17 @@ if (isset($_POST['Submit'])) {
 
     // Check if there are changes to update
     if (count($updates) > 0) {
-        // Check if the new Department ID already exists (if being updated)
-        if (isset($updates['DepartmentID'])) {
-            $checkDepID = $conn->prepare("SELECT COUNT(*) FROM departments_table WHERE DepartmentID = :DepartmentID");
-            $checkDepID->bindValue(':DepartmentID', $updates['DepartmentID']);
-            $checkDepID->execute();
-            $DepartmentIDExists = $checkDepID->fetchColumn();
 
-            if ($DepartmentIDExists > 0) {
-                echo "<script>alert('Department ID already exists.');</script>";
-                return; // Avoid proceeding with the update
-            }
-        }
-
-        // Build the dynamic UPDATE query
-        $sql = "UPDATE departments_table SET ";
-        $setParts = array();
-
-        foreach ($updates as $key => $value) {
-            $setParts[] = "$key = :$key";
-        }
-
+          // Build the dynamic UPDATE query
+          $sql = "UPDATE departments_table SET ";
+          $setParts = [];
+  
+          foreach ($updates as $key => $value) {
+              $setParts[] = "$key = :$key";
+          }
+       
+        
+        
         $sql .= implode(", ", $setParts);
         $sql .= " WHERE DepartmentID = :id";
 
@@ -76,8 +66,7 @@ if (isset($_POST['Submit'])) {
         $stmt->execute();
 
         echo "<script>alert('Successfully updated department information.');</script>";
-
-        header("Location: department_details.php"); // Redirect to details page
+        header("Location: Details.php"); // Redirect to details page
         exit();
     } else {
         echo "<script>alert('No changes to update.');</script>";
@@ -117,7 +106,7 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
             
             <div class="inputBox">
             <!--p>Department Name:</p-->
-            <input type="text" id="Dep_Name" name="Dep_Name" required >
+            <input type="text" id="Dep_Name" name="Dep_Name"  value="<?php echo $row['DepartmentName']?? ''; ?>">
             <span>Enter Your Department Name (Emaild you) :</span>
             <i></i>
             </div>
@@ -125,7 +114,7 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
             <br>
             <div class="inputBox">
             <!--P> Department ID:</P-->
-            <input type="text" id="Dep_ID" name="Dep_ID" required>
+            <input type="text" id="Dep_ID" name="Dep_ID" value="<?php echo $depID; ?>">
             <span>Enter Your Department ID (Emaild you) :</span> 
             <i></i>
             </div>
@@ -133,7 +122,7 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
             <br>
             <div class="inputBox">
             <!--P>Department Head:</P-->
-            <input type="text" id="Dep_Head" name="Dep_Head" required>
+            <input type="text" id="Dep_Head" name="Dep_Head" value="<?php echo $row['DepartmentHead']?? '';?>">
             <span>Department Head :</span> 
             <i></i>
             </div>
@@ -141,29 +130,33 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
 
             
             <label for="location">Select Location</label>
-            <select name="location" id="location" required>
-                <option value="" >Location</option>
-                <option value="Colombo">Colombo</option>
-                <option value="Gampaha">Gampaha</option>
-                <option value="Kalutara">Kalutara</option>
-                <option value="Kandy">Kandy</option>
-                <option value="Matale">Matale</option>
-                <option value="Nuwara Eliya">Nuwara Eliya</option>
-                <option value="Polonnaruwa"> Polonnaruwa</option>
-                <option value="Kurunegala">Kurunegala</option>
-                <option value="Puttalam">Puttalam</option>
-                <option value="Anuradhapura">Anuradhapura</option>
-                <option value="Anuradhapura">Anuradhapura</option>
-                <option value="Hambantota">Hambantota</option>
-                <option value=" Ratnapura"> Ratnapura</option>
-                <option value=" Kegalle"> Kegalle</option>
-            </select>
-            <br>
+
+            
+        <?php
+            $currentLocation = $row['Location'] ?? ''; // Get the current location
+        ?>
+
+        <select name="location" id="location">
+                <option value="Colombo" <?php echo $currentLocation == "Colombo" ? 'selected' : ''; ?>>Colombo</option>
+                <option value="Gampaha" <?php echo $currentLocation == "Gampaha" ? 'selected' : ''; ?>>Gampaha</option>
+                <option value="Kalutara" <?php echo $currentLocation == "Kalutara" ? 'selected' : ''; ?>>Kalutara</option>
+                <option value="Kandy" <?php echo $currentLocation == "Kandy" ? 'selected' : ''; ?>>Kandy</option>
+                <option value="Matale" <?php echo $currentLocation == "Matale" ? 'selected' : ''; ?>>Matale</option>
+                <option value="Nuwara Eliya" <?php echo $currentLocation == "Nuwara Eliya" ? 'selected' : ''; ?>>Nuwara Eliya</option>
+                <option value="Polonnaruwa" <?php echo $currentLocation == "Polonnaruwa" ? 'selected' : ''; ?>>Polonnaruwa</option>
+                <option value="Kurunegala" <?php echo $currentLocation == "Kurunegala" ? 'selected' : ''; ?>>Kurunegala</option>
+                <option value="Puttalam" <?php echo $currentLocation == "Puttalam" ? 'selected' : ''; ?>>Puttalam</option>
+                <option value="Anuradhapura" <?php echo $currentLocation == "Anuradhapura" ? 'selected' : ''; ?>>Anuradhapura</option>
+                <option value="Hambantota" <?php echo $currentLocation == "Hambantota" ? 'selected' : ''; ?>>Hambantota</option>
+                <option value="Ratnapura" <?php echo $currentLocation == "Ratnapura" ? 'selected' : ''; ?>>Ratnapura</option>
+                <option value="Kegalle" <?php echo $currentLocation == "Kegalle" ? 'selected' : ''; ?>>Kegalle</option>
+        </select>
+        <br>
             
             
             <div class="inputBox">
             <!--P>Department Contact No:</P-->
-            <input type="text" id="Dep_Contact_No" name="Dep_Contact_No" required>
+            <input type="text" id="Dep_Contact_No" name="Dep_Contact_No" value="<?php echo $row['DEPhone'] ?? '';  ?> ">
             <span>Enter Department Contact No (Emaild you):</span> 
             <i></i>
             </div>
@@ -171,7 +164,7 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
             <br>
             <div class="inputBox">
             <!--P>Department Email:</P-->
-            <input type="text" id="Dep_Email" name="Dep_Email" required>
+            <input type="text" id="Dep_Email" name="Dep_Email" value="<?php echo $row['DepEmail'] ?? '';  ?> ">
             <span>Enter Department Email:</span> 
             <i></i>
             </div>
@@ -180,7 +173,7 @@ $row = $result !== false ? $result : array(); // Assign the fetched data to $row
             <br><br>
             <br> 
             <div class="Apple">
-            <input type="submit" value="Submit" name="Submit">
+            <input type="submit" value="Update" name="Submit" onclick="return confirm('UPDATE SUCCUESS');">
             <input type="reset" value="Reset">
             <button style="margin-left: 135px;" type="button" value="Back">  <a style="text-decoration: none;" href="ENROLLMENT DEATILS.html">Back</a></button>
             </div>

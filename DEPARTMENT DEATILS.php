@@ -31,7 +31,8 @@ if(isset($_POST['Submit'])){
             $p->bindValue(':F',$Dep_Email);
             $p->execute();
 
-
+            header("Location:Details.php");
+            exit();
             echo "<script type='text/javascript'> alert('Successfully Saved')</script>";
         }
     } else {

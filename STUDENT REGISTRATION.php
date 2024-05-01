@@ -50,8 +50,8 @@ if (isset($_POST['submit'])) {
             $p->bindValue(':En', $Eno);
             $p->execute();
 
-          // header("Location:courses.php");
-           //exit();
+            header("Location:courses.php");
+           exit();
 
             echo "<script type='text/javascript'> alert('Successfully Saved')</script>";
         }
