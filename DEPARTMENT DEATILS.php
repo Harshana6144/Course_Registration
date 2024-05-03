@@ -124,7 +124,7 @@ if(isset($_POST['Submit'])){
             <br><br>
             <br> 
             <div class="Apple">
-            <input type="submit" value="Submit" name="Submit">
+            <input type="submit" value="Submit" name="Submit" onclick="return confirm('Data Saved SUCCUESS');">
             <input type="reset" value="Reset">
             <button style="margin-left: 135px;" type="button" value="Back">  <a style="text-decoration: none;" href="ENROLLMENT DEATILS.html">Back</a></button>
             </div>
